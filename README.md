@@ -21,3 +21,8 @@
 - Abstract away all the graphical stuff so the students can investigate just the GA code
 - Ensure basic preset doesn't take too long to run
 - Electron-esque window for config, SDL window for visuals?
+- Graphs
+- Jupyter style
+- Abstract away stuff that they shouldn't be able to edit
+- User stories from perspective of professor, not students. Performance is relevant to have it work within the time frame, and features are useful for learning outcomes
+- Note down choices about libraries
