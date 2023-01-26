@@ -1,4 +1,9 @@
 # Genetic Algorithm
+## Potential libraries
+- [goga](https://github.com/tomcraven/goga) -- GA
+- [box2d](https://github.com/ByteArena/box2d) -- physics
+- [wails](https://github.com/wailsapp/wails) -- GUI
+
 ## Notes
 - Investigate using different goals (e.g., highest velocity, furthest distance)
 - Maybe use a central leaderboard for storing which student got the best result
