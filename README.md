@@ -2,6 +2,9 @@
 ## Potential libraries
 - [goga](https://github.com/tomcraven/goga) -- GA (golang)
 - [box2d](https://github.com/ByteArena/box2d) -- physics (golang)
+- [oak](https://github.com/oakmound/oak) -- physics (golang)
+- [pixel](https://github.com/faiface/pixel) -- physics (golang)
+- [engo](https://github.com/EngoEngine/engo) -- physics (golang)
 - [wails](https://github.com/wailsapp/wails) -- GUI (golang)
 - [openga](https://github.com/Arash-codedev/openGA) -- GA (c++)
 - [box2d](https://github.com/erincatto/box2d) -- physics (c++)
