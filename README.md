@@ -1,8 +1,11 @@
 # Genetic Algorithm
 ## Potential libraries
-- [goga](https://github.com/tomcraven/goga) -- GA
-- [box2d](https://github.com/ByteArena/box2d) -- physics
-- [wails](https://github.com/wailsapp/wails) -- GUI
+- [goga](https://github.com/tomcraven/goga) -- GA (golang)
+- [box2d](https://github.com/ByteArena/box2d) -- physics (golang)
+- [wails](https://github.com/wailsapp/wails) -- GUI (golang)
+- [openga](https://github.com/Arash-codedev/openGA) -- GA (c++)
+- [box2d](https://github.com/erincatto/box2d) -- physics (c++)
+
 
 ## Notes
 - Investigate using different goals (e.g., highest velocity, furthest distance)
