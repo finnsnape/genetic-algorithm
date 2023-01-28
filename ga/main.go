@@ -8,7 +8,7 @@ import (
 
 type Genome struct {
     fitness uint
-    bits []byte
+    bytes []byte
 }
 
 type Population struct {
@@ -20,35 +20,35 @@ type Population struct {
 
 type GeneticAlgorithm struct {
     population Population
+    maxGenerations uint
     target []byte
     generation uint
 }
 
 func (ga *GeneticAlgorithm) initialiseGenome() Genome {
-    bits := make([]byte, len(ga.target))
-    _, err := rand.Read(bits)
+    bytes := make([]byte, len(ga.target))
+    _, err := rand.Read(bytes)
     if err != nil {
         panic("Couldn't initialise genome")
     }
     genome := Genome{}
-    genome.bits = bits
+    genome.bytes = bytes
     return genome
 }
 
-func (ga *GeneticAlgorithm) initialisePopulation(size uint) {
+func (ga *GeneticAlgorithm) initialisePopulation(populationSize uint) {
     ga.population = Population{} // ?
-    ga.population.size = size
+    ga.population.size = populationSize
     for i:=uint(0); i<ga.population.size; i++ {
         genome := ga.initialiseGenome()
         ga.population.genomes = append(ga.population.genomes, genome)
     }
-    ga.evaluatePopulation()
 }
 
 func (ga *GeneticAlgorithm) evaluateGenome(genome Genome) uint {
     fitness := uint(0)
     for i, b := range ga.target {
-        if b != genome.bits[i] {
+        if b != genome.bytes[i] {
             fitness++
         }
     }
@@ -71,7 +71,7 @@ func (ga *GeneticAlgorithm) selectParents() []Genome {
 
 }
 
-func (ga *GeneticAlgorithm) mateParents() {
+func (ga *GeneticAlgorithm) matePopulation() {
     parents := ga.selectParents()
 }
 
@@ -87,19 +87,31 @@ func (ga *GeneticAlgorithm) print() {
     fmt.Println("Generation: ", ga.generation)
     fmt.Println("Average fitness: ", ga.population.totalFitness/ga.population.size)
     fmt.Println("Best fitness: ", ga.population.fittestGenome.fitness)
-    fmt.Println("Best solution: ", ga.population.fittestGenome.bits)
+    fmt.Println("Best solution: ", ga.population.fittestGenome.bytes)
     fmt.Println()
 }
 
 func (ga *GeneticAlgorithm) evolve() {
-    ga.print()
     ga.evaluatePopulation()
-    ga.mateParents()
+    ga.print()
+    ga.matePopulation()
     ga.mutatePopulation()
     ga.generation++
 }
 
-
-
 func main() {
+    populationSize := uint(10)
+    target := []byte("The quick brown fox jumps over the lazy dog")
+    ga := GeneticAlgorithm{}
+    ga.initialisePopulation(populationSize)
+    ga.target = target
+    ga.maxGenerations = 0 // no max
+    for {
+        ga.evolve()
+        if ga.population.fittestGenome.fitness == 0 {
+            break // solution found
+        } else if ga.generation > ga.maxGenerations && ga.maxGenerations != 0 {
+            break // exceeded max generations
+        }
+    }
 }
