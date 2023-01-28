@@ -1,0 +1,24 @@
+.stack {
+    // The flex context
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * {
+    // Any extant vertical margins are removed
+  margin-block: 0;
+}
+
+.stack > * + * {
+    // Top margin is only applied to successive elements
+  margin-block-start: 1em; // $size-000
+}
+
+.stack-recursive * + * {
+    margin-block-start: 1em; // $size-000
+}
+
+.stack:only-child {
+    height: 100%;
+}

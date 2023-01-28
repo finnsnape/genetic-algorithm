@@ -1,0 +1,20 @@
+.button {
+    align-self: flex-start;
+    border-radius: 3em;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: calc($size-010/2);
+    svg {
+        font-size: inherit;
+        height: 2ex;
+        width: 2ex;
+    }
+  &--primary {
+        border: 2px solid;
+        font-size: $size-010;
+        padding: 1.5em 2.25em;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+}
