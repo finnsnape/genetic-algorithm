@@ -9,6 +9,15 @@
 - [openga](https://github.com/Arash-codedev/openGA) -- GA (c++)
 - [box2d](https://github.com/erincatto/box2d) -- physics (c++)
 
+## TODO
+- Add comments
+- Improve OOP/modules
+- Add customisation (mutation rate, population size, stopping conditions)
+- UI (take advantage of svelte)
+- link UI to GA with wails
+- Goroutines
+- gitignore
+- Simplify CSS (won't need to be responsive)
 
 ## Notes
 - Investigate using different goals (e.g., highest velocity, furthest distance)
