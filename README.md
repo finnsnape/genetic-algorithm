@@ -19,6 +19,7 @@
 - gitignore
 - Simplify CSS (won't need to be responsive)
 - elitism
+- email John L. about getting a suitable marker / HCI aspect
 
 ## Notes
 - Investigate using different goals (e.g., highest velocity, furthest distance)
