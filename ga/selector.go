@@ -9,13 +9,13 @@ type Selector interface {
 }
 
 type Tournament struct {
-	tournamentSize uint
+	tournamentSize int
 }
 
 func (selector Tournament) Select(population Population) Individual {
 	var competitors []Individual
-	for i := uint(0); i < selector.tournamentSize; i++ {
-		randomNumber := rand.Intn(int(population.size)) // range?
+	for i := 0; i < selector.tournamentSize; i++ {
+		randomNumber := rand.Intn(population.size) // range?
 		competitor := population.individuals[randomNumber]
 		competitors = append(competitors, competitor)
 	}

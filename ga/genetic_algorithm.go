@@ -8,13 +8,13 @@ type GeneticAlgorithm struct {
 	breeder        Breeder
 	mutator        Mutator
 	population     Population
-	maxGenerations uint
+	maxGenerations int
 	target         []byte
-	generation     uint
+	generation     int
 	solved         bool
 }
 
-func newGeneticAlgorithm(selector Selector, evaluator Evaluator, breeder Breeder, mutator Mutator, maxGenerations uint, target []byte, populationSize uint) *GeneticAlgorithm {
+func newGeneticAlgorithm(selector Selector, evaluator Evaluator, breeder Breeder, mutator Mutator, maxGenerations int, target []byte, populationSize int) *GeneticAlgorithm {
 	return &GeneticAlgorithm{
 		selector:       selector,
 		evaluator:      evaluator,
@@ -42,7 +42,7 @@ func (ga *GeneticAlgorithm) evaluate() {
 
 func (ga *GeneticAlgorithm) breed() {
 	var individuals []Individual
-	for uint(len(individuals)) < ga.population.size {
+	for len(individuals) < ga.population.size {
 		parent1 := ga.selector.Select(ga.population)
 		parent2 := ga.selector.Select(ga.population)
 		child1Genome, child2Genome := ga.breeder.Breed(parent1, parent2)

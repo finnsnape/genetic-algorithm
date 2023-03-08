@@ -6,7 +6,7 @@ import (
 )
 
 type Population struct {
-	size         uint
+	size         int
 	individuals  []Individual
 	totalFitness float64
 	waitGroup    *sync.WaitGroup
@@ -18,9 +18,9 @@ func (population Population) print() {
 	}
 }
 
-func newPopulation(size uint, target []byte) Population {
+func newPopulation(size int, target []byte) Population {
 	var individuals []Individual
-	for i := uint(0); i < size; i++ {
+	for i := 0; i < size; i++ {
 		individual := newIndividual(len(target))
 		individuals = append(individuals, individual)
 	}
