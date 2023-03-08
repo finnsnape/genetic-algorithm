@@ -18,7 +18,8 @@ type GeneticAlgorithm struct {
 	waitGroup      *sync.WaitGroup
 }
 
-func newGeneticAlgorithm(selector Selector, evaluator Evaluator, breeder Breeder, mutator Mutator, maxGenerations int, target []byte, populationSize int) *GeneticAlgorithm {
+func newGeneticAlgorithm(selector Selector, evaluator Evaluator, breeder Breeder, mutator Mutator, maxGenerations int, populationSize int) *GeneticAlgorithm {
+	target := loadTarget()
 	return &GeneticAlgorithm{
 		selector:       selector,
 		evaluator:      evaluator,
@@ -32,6 +33,24 @@ func newGeneticAlgorithm(selector Selector, evaluator Evaluator, breeder Breeder
 	}
 }
 
+func loadTarget() []byte {
+	img, _ := getImageFromFilePath("target.png")
+	bounds := img.Bounds()
+	length := bounds.Dx() * bounds.Dx()
+	target := make([]byte, 0, length)
+	for i := 0; i < bounds.Dx(); i++ {
+		for j := 0; j < bounds.Dx(); j++ {
+			r, g, b, _ := img.At(j, i).RGBA()
+			val := []byte("0")
+			if r == 0 && b == 0 && g == 0 {
+				val = []byte("1")
+			}
+			target = append(target, val...)
+		}
+	}
+	return target
+}
+
 func (ga *GeneticAlgorithm) evaluate() {
 	ga.population.totalFitness = 0.0
 	for i, individual := range ga.population.individuals {
@@ -40,6 +59,7 @@ func (ga *GeneticAlgorithm) evaluate() {
 		ga.population.totalFitness += fitness
 		if fitness == 1.0 {
 			ga.solved = true
+			printImage(individual.genome, 16)
 		}
 	}
 }
