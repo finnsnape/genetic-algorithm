@@ -22,7 +22,8 @@ func main() {
 	maxGenerations := 0
 	mutator := RandomReset{mutationRate: 0.002}
 	//selector := Tournament{tournamentSize: 8}
-	selector := Roulette{}
+	selector := Rank{selectionPressure: 1.5}
+	//breeder := MultiPointCrossover{crossoverRate: 0.9, n: 1}
 	breeder := OnePointCrossover{crossoverRate: 0.9}
 	evaluator := ByteMatch{}
 	ga := newGeneticAlgorithm(selector, evaluator, breeder, mutator, maxGenerations, target, populationSize)
