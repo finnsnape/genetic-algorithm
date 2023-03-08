@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
 
 type GeneticAlgorithm struct {
 	selector       Selector
@@ -12,6 +15,7 @@ type GeneticAlgorithm struct {
 	target         []byte
 	generation     int
 	solved         bool
+	waitGroup      *sync.WaitGroup
 }
 
 func newGeneticAlgorithm(selector Selector, evaluator Evaluator, breeder Breeder, mutator Mutator, maxGenerations int, target []byte, populationSize int) *GeneticAlgorithm {

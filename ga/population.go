@@ -2,14 +2,12 @@ package main
 
 import (
 	"fmt"
-	"sync"
 )
 
 type Population struct {
 	size         int
 	individuals  []Individual
 	totalFitness float64
-	waitGroup    *sync.WaitGroup
 }
 
 func (population Population) print() {
