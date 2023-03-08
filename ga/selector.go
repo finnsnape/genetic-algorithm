@@ -2,6 +2,7 @@ package main
 
 import (
 	"math/rand"
+	"sort"
 )
 
 type Selector interface {
@@ -44,5 +45,24 @@ func (Roulette) Select(population Population) Individual {
 			return individual
 		}
 	}
-	panic("Couldn't select a fitness")
+	panic("Couldn't select an individual")
+}
+
+type Rank struct {
+	selectionPressure float64
+}
+
+func (selector Rank) Select(population Population) Individual {
+	sort.Slice(population.individuals, func(i, j int) bool {
+		return population.individuals[i].fitness > population.individuals[j].fitness
+	})
+	randomNumber := rand.Float64()
+	probabilitySum := 0.0
+	for i, individual := range population.individuals {
+		probabilitySum += (1 / float64(population.size)) * (selector.selectionPressure - (2*selector.selectionPressure-2)*float64(i)/(float64(population.size)-1))
+		if randomNumber < probabilitySum {
+			return individual
+		}
+	}
+	panic("Couldn't select an individual")
 }
