@@ -11,15 +11,12 @@
 
 ## TODO
 - Add comments
-- Improve OOP/modules
-- Add customisation (mutation rate, population size, stopping conditions)
 - UI (take advantage of svelte)
 - link UI to GA with wails
 - Goroutines
-- gitignore
 - Simplify CSS (won't need to be responsive)
 - elitism
-- email John L. about getting a suitable marker / HCI aspect
+- Reduce code duplication
 
 ## Notes
 - Investigate using different goals (e.g., highest velocity, furthest distance)
@@ -37,3 +34,5 @@
 - Abstract away stuff that they shouldn't be able to edit
 - User stories from perspective of professor, not students. Performance is relevant to have it work within the time frame, and features are useful for learning outcomes
 - Note down choices about libraries
+- Create worksheets
+- Competition?
