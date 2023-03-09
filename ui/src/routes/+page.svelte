@@ -17,8 +17,18 @@
         flex-direction: column;
         margin-top: $size-040;
 
+        label, select, input {
+          text-align: center;
+        }
+
         input {
             width: 300px;
+        }
+
+        input[type="number"], select, button {
+          padding: 5px 8px;
+          border-radius: 8px;
+          border: 1px solid #999;
         }
     }
 </style>
@@ -27,9 +37,6 @@
     <h1 class="heading-2">Config</h1>
 
     <form class="stack">
-        <label for="target">Target string</label>
-        <input type="text" name="target" value="The quick brown fox jumps over the lazy dog">
-
         <label for="mutation-rate">Mutation rate (%)</label>
         <input type="number" name="mutation-rate" min=0 max=100 value=5>
 
@@ -43,13 +50,18 @@
         <select name="selection-mode">
             <option value="0">Roulette</option>
             <option value="1">Tournament</option>
+            <option value="1">Rank</option>
         </select>
 
-        <label for="mating-mode">Mating mode</label>
-        <select name="mating-mode">
+        <label for="breeding-mode">Breeding mode</label>
+        <select name="breeding-mode">
             <option value="0">Single-point crossover</option>
             <option value="1">Two-point crossover</option>
+            <option value="2">Uniform crossover</option>
         </select>
+
+        <label for="crossover-rate">Crossover rate (%)</label>
+        <input type="number" name="mutation-rate" min=0 max=100 value=90>
 
         <button>Save</button>
         <button>Run</button>
