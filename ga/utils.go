@@ -41,6 +41,7 @@ func getImageFromFilePath(filePath string) (image.Image, error) {
 }
 
 func printImage(genome []byte, size int) {
+	fmt.Println()
 	for i := 0; i < size*size; i++ {
 		char := "⬜"
 		if genome[i] == []byte("1")[0] {
@@ -48,7 +49,7 @@ func printImage(genome []byte, size int) {
 		}
 		fmt.Print(char)
 		if (i+1)%size == 0 {
-			fmt.Print("\n")
+			fmt.Println()
 		}
 	}
 }

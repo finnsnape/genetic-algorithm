@@ -34,7 +34,7 @@ func newGeneticAlgorithm(selector Selector, evaluator Evaluator, breeder Breeder
 }
 
 func loadTarget() []byte {
-	img, _ := getImageFromFilePath("target.png")
+	img, _ := getImageFromFilePath("target1.png")
 	bounds := img.Bounds()
 	length := bounds.Dx() * bounds.Dx()
 	target := make([]byte, 0, length)
@@ -52,16 +52,20 @@ func loadTarget() []byte {
 }
 
 func (ga *GeneticAlgorithm) evaluate() {
+	fittestIndividual := ga.population.individuals[0]
 	ga.population.totalFitness = 0.0
 	for i, individual := range ga.population.individuals {
 		fitness := ga.evaluator.Evaluate(individual, ga.target)
 		ga.population.individuals[i].fitness = fitness
 		ga.population.totalFitness += fitness
+		if fitness > fittestIndividual.fitness {
+			fittestIndividual = ga.population.individuals[i]
+		}
 		if fitness == 1.0 {
 			ga.solved = true
-			printImage(individual.genome, 16)
 		}
 	}
+	printImage(fittestIndividual.genome, 32)
 }
 
 func (ga *GeneticAlgorithm) breed() {
@@ -90,7 +94,9 @@ func (ga *GeneticAlgorithm) print() {
 
 func (ga *GeneticAlgorithm) evolve() {
 	ga.evaluate()
-	ga.print()
+	if ga.solved {
+		return
+	}
 	ga.breed()
 	ga.mutate()
 	ga.generation++
@@ -100,7 +106,6 @@ func (ga *GeneticAlgorithm) simulate() {
 	for {
 		ga.evolve()
 		if ga.solved {
-			fmt.Println("Solved")
 			break // solution found
 		} else if ga.generation > ga.maxGenerations && ga.maxGenerations != 0 {
 			fmt.Println("Maximum generations reached")
