@@ -34,7 +34,7 @@ func newGeneticAlgorithm(selector Selector, evaluator Evaluator, breeder Breeder
 }
 
 func loadTarget() []byte {
-	img, _ := getImageFromFilePath("target1.png")
+	img, _ := getImageFromFilePath("target2.png")
 	bounds := img.Bounds()
 	length := bounds.Dx() * bounds.Dx()
 	target := make([]byte, 0, length)
