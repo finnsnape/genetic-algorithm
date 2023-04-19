@@ -2,10 +2,12 @@ package main
 
 import (
 	"fmt"
+	"github.com/traefik/yaegi/interp"
 	"image"
 	_ "image/png"
 	"math/rand"
 	"os"
+	"reflect"
 )
 
 func randStringRunes(n int) []byte {
@@ -52,4 +54,20 @@ func printImage(genome []byte, size int) {
 			fmt.Println()
 		}
 	}
+}
+
+// Return function
+func codeToFunction(code string, functionName string) reflect.Value {
+	i := interp.New(interp.Options{})
+	_, err := i.Eval(code)
+	if err != nil {
+		panic(err)
+	}
+
+	v, err := i.Eval("foo." + functionName)
+	if err != nil {
+		panic(err)
+	}
+
+	return v
 }
