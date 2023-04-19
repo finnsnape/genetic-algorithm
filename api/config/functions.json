@@ -1,0 +1,25 @@
+{
+  "breeder": {
+    "title": "Breeder",
+    "inputs": [
+      {
+        "name": "parent1",
+        "type": "[]byte"
+      },
+      {
+        "name": "parent2",
+        "type": "[]byte"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "child1",
+        "type": "[]byte"
+      },
+      {
+        "name": "child2",
+        "type": "[]byte"
+      }
+    ]
+  }
+}
