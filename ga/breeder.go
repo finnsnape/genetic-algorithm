@@ -54,18 +54,4 @@ func (breeder UniformCrossover) Breed(parent1 Individual, parent2 Individual) ([
 	return child1Genome, child2Genome
 }
 
-type CustomBreeder struct {
-	code           string
-	needsCompiling bool
-	function       func(Individual, Individual) ([]byte, []byte)
-}
 
-func (breeder *CustomBreeder) Breed(parent1 Individual, parent2 Individual) ([]byte, []byte) {
-	if breeder.function == nil || breeder.needsCompiling {
-		v := codeToFunction(breeder.code, "Breeder")
-		breeder.function = v.Interface().(func(Individual, Individual) ([]byte, []byte))
-		breeder.needsCompiling = false
-	}
-
-	return breeder.function(parent1, parent2)
-}
