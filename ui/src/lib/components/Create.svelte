@@ -29,6 +29,10 @@
       }
     }
 
+    input {
+      align-self: flex-start;
+    }
+
     button {
       align-self: flex-start;
     }
@@ -36,15 +40,15 @@
 
 <form method="POST" class="stack">
     <h1 class="heading-1">Create a {func.title}</h1>
-    <p>{func.description}</p>
-    <label for="name">Unique name:</label>
+    <p class="paragraph-2">{func.description}</p>
+    <label class="paragraph-2" for="name">Unique name:</label>
     <input name="name" type="text" placeholder={func.placeholder}>
-    <label for="code">Code:</label>
-    <p>func {func.name}({formattedInputs}) {formattedOutputTypes} &#123;</p>
-    <div style="margin: 0 40px; display: flex; flex-direction: column">
-        <textarea name="code" rows="20"></textarea>
+    <label class="paragraph-2" for="code">Code:</label>
+    <p class="paragraph-2">func {func.name}({formattedInputs}) {formattedOutputTypes} &#123;</p>
+    <div class="paragraph-2" style="margin: 0 40px; display: flex; flex-direction: column">
+        <textarea name="code" rows="15"></textarea>
         return {formattedOutputNames}
     </div>
-    }
+    <p class="paragraph-2">}</p>
     <button class="button button--primary">Save</button>
 </form>

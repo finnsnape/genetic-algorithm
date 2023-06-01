@@ -17,7 +17,7 @@ input[type="text"], select, textarea {
   border-radius: $size-000;
   border: 0;
   &:focus {
-      outline: 2px solid hsl(275, 32%, 50%);
+      outline: 2px solid #000;
   }
   
 }
