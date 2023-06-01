@@ -1,20 +1,39 @@
 .button {
-    align-self: flex-start;
-    border-radius: 3em;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: calc($size-010/2);
-    svg {
-        font-size: inherit;
-        height: 2ex;
-        width: 2ex;
-    }
+  // align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: calc($size-000);
+  border: 0;
+  svg {
+      font-size: inherit;
+      height: 2.5ex;
+      width: 2.5ex;
+  }
   &--primary {
-        border: 2px solid;
-        font-size: $size-010;
-        padding: 1.5em 2.25em;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: $size-000;
+      font-size: $size-000;
+      padding: 1em 1.5em;
+      letter-spacing: 0.5px;  
+  }
+  &--secondary {
+      text-decoration: none;
+      border-radius: $size-000;
+      font-size: $size-000;
+      padding: 0.7em 1.05em; // what is 1em here?
+      border: 2px solid transparent;
+      background: 0;
+  }
+  &--tertiary {
+      text-decoration: underline;
+      background: none;
+      border-radius: 0;
+      padding: 0;
+      color: #222;
+      &:hover {
+          color: #000;
+      }
+  }
 }

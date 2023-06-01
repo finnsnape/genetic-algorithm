@@ -1,14 +1,33 @@
+<script lang="ts">
+  import { page } from '$app/stores'; 
+
+  let nav = [
+    {
+      "href": "/learn",
+      "title": "Learn",
+    },
+    {
+      "href": "/create",
+      "title": "Create",
+    },
+    {
+      "href": "/run",
+      "title": "Run",
+    },
+  ];
+</script>
+
 <style lang="scss">
     nav {
       display: flex;
       justify-content: space-evenly;
       padding: $size-010;
-      background-color: lightgray;
+      margin-bottom: $size-060;
     }
 </style>
 
 <nav>
-    <a href="/learn">Learn</a>
-    <a href="/create">Create</a>
-    <a href="/run">Run</a>
+  {#each nav as navItem}
+  <a class="button button--tertiary paragraph-2" class:active={$page.url.pathname.split("/")[1] === navItem.href.split("/")[1]} href={navItem.href}>{navItem.title}</a>
+  {/each}
 </nav>

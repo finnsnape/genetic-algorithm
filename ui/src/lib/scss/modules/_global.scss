@@ -1,35 +1,64 @@
 ::selection {
-    color: #fff;
-    background-color: #1f7a6b;
+  color: #fff;
+  background-color: hsl(275, 32%, 50%);
+}
+
+a.active {
+  font-weight: 700;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: transparent; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #777; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
 }
 
 .fade-in-scroll {
-    transition: opacity 2s, transform 1s;
+  transition: opacity 2s, transform 1s;
 }
 
 .faded-in {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 strong.bold {
-    font-weight: 600;
+  font-weight: 600;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .sr-only {
-    border: 0 !important;
-    clip: rect(1px 1px 1px 1px);
-    clip-path: polygon(0px 0px, 0px 0px,0px 0px, 0px 0px);
-    -webkit-clip-path: polygon(0px 0px, 0px 0px,0px 0px, 0px 0px);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden !important;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    word-wrap: normal !important;
+  border: 0 !important;
+  clip: rect(1px 1px 1px 1px);
+  clip-path: polygon(0px 0px, 0px 0px,0px 0px, 0px 0px);
+  -webkit-clip-path: polygon(0px 0px, 0px 0px,0px 0px, 0px 0px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden !important;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
 }
 
 .stack > * + * {
-    margin-block-start: 1em;
+  margin-block-start: 1em;
 }
+

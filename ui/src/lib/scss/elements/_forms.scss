@@ -1,0 +1,25 @@
+label {
+  color: #000;
+  margin-bottom: $size-000;
+}
+
+::placeholder {
+  color: #555;
+}
+
+input[type="text"], select, option, textarea {
+  background-color: #ddd;
+  color: #000;
+  padding: $size-000 $size-010;
+}
+
+input[type="text"], select, textarea {
+  border-radius: $size-000;
+  border: 0;
+  &:focus {
+      outline: 2px solid hsl(275, 32%, 50%);
+  }
+  
+}
+
+

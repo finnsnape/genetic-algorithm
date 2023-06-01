@@ -28,10 +28,14 @@
         font-weight: 700;
       }
     }
+
+    button {
+      align-self: flex-start;
+    }
 </style>
 
 <form method="POST" class="stack">
-    <h1>Create a {func.title}</h1>
+    <h1 class="heading-1">Create a {func.title}</h1>
     <p>{func.description}</p>
     <label for="name">Unique name:</label>
     <input name="name" type="text" placeholder={func.placeholder}>
@@ -42,5 +46,5 @@
         return {formattedOutputNames}
     </div>
     }
-    <button>Save</button>
+    <button class="button button--primary">Save</button>
 </form>
