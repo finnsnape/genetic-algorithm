@@ -1,0 +1,30 @@
+.heading-1, .heading-1 > span, .heading-1 > strong {
+  color: #000;
+  font-weight: 700;
+  font-size: $size-040;
+  line-height: 1;
+  margin-bottom: $size-070;
+}
+
+.heading-2, .heading-2 > span, .heading-2 > strong {
+  font-weight: 600;
+  font-size: $size-030;
+  line-height: 1;
+}
+
+.heading-3, .heading-3 > span, .heading-3 > strong {
+  font-weight: 600;
+  font-size: $size-020;
+  line-height: 1;
+}
+
+.heading-4, .heading-4 > span, .heading-4 > strong {
+  font-weight: 500;
+  font-size: $size-010;
+  line-height: 1;
+}
+
+.accent-heading {
+  font-weight: 500;
+  font-size: $size-010;
+}

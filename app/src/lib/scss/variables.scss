@@ -1,0 +1,25 @@
+/* Variables and mixins declared here will be available in all other SCSS files */
+
+/* Font sizes */
+$size-000: clamp(0.64rem, 0.42vw + 0.57rem, 1.62rem);
+$size-010: clamp(0.8rem, 0.59vw + 0.71rem, 2.16rem);
+$size-020: clamp(1rem, 0.81vw + 0.87rem, 2.88rem);
+$size-030: clamp(1.25rem, 1.12vw + 1.07rem, 3.83rem);
+$size-040: clamp(1.56rem, 1.53vw + 1.32rem, 5.11rem);
+$size-050: clamp(1.95rem, 2.1vw + 1.62rem, 6.81rem);
+$size-060: clamp(2.44rem, 2.87vw + 1.98rem, 9.08rem);
+$size-070: clamp(3.05rem, 3.91vw + 2.43rem, 12.1rem);
+
+/* Increasing spaces */
+$space-xl-3xl: clamp(0.63rem, calc(-0.39rem + 6.52vw), 15.75rem);
+
+/* Screen sizes */
+$screen-xxs: 19em; // 304
+$screen-xs: 30em; // 480
+$screen-s: 48em; // 768
+$screen-m: 64em; // 1024
+$screen-l: 75em; // 1200
+$screen-xl: 100em; // 1600
+$screen-max: 256em; // 4096
+
+/* Colours */
