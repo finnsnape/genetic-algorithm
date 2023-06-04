@@ -19,6 +19,10 @@
     margin-block-start: 1em; // $size-000
 }
 
+.stack-recursive-l * + * {
+  margin-block-start: 2em;
+}
+
 .stack:only-child {
     height: 100%;
 }

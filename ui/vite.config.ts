@@ -5,7 +5,6 @@ const config: UserConfig = {
 	plugins: [
         sveltekit(),
     ],
-
     css: {
         preprocessorOptions: {
             scss: {

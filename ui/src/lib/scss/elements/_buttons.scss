@@ -21,9 +21,9 @@
   &--secondary {
       text-decoration: none;
       border-radius: $size-000;
-      font-size: $size-000;
+      font-size: $size-010;
       padding: 0.7em 1.05em; // what is 1em here?
-      border: 2px solid transparent;
+      border: 2px solid #000;
       background: 0;
   }
   &--tertiary {
