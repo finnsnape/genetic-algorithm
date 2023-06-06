@@ -85,11 +85,13 @@
 
 <h1 class="heading-1">Run</h1>
 <form method="POST">
-    {#each Object.entries(data) as [name, func]}
+    {#each data.categories as category, i}
         <div class="form-item">
-            <label class="paragraph-2">{func.title}</label>
+            <label class="paragraph-2">{category.title}</label>
             <select>
-                <option>N/A></option>
+            {#each category.functions as func, i}
+                <option value={i}>{func.nickname}</option>
+            {/each}
             </select>
         </div>
     {/each}

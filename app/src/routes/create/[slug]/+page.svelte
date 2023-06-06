@@ -4,4 +4,4 @@
     // TODO: do we need this to be a component?
 </script>
 
-<Create categoryTitle={data.categoryTitle} functionDeclaration={data.functionDeclaration} code={data.code} nickname={data.nickname} populationContent={data.populationContent} individualContent={data.individualContent} newFunction={data.newFunction}></Create>
+<Create createFunc={data.createFunc} populationContent={data.populationContent} individualContent={data.individualContent}></Create>

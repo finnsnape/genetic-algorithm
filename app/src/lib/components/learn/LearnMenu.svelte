@@ -8,7 +8,6 @@
     });
     // create sub menu based on h1s
 </script>
-
 <nav>
   <ol class="stack">
     {#each [...menuItems] as [title, file]}

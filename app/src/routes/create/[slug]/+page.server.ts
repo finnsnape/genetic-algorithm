@@ -1,6 +1,7 @@
 import { error } from '@sveltejs/kit';
 import * as prettier from "prettier";
 import parserTypescript from "prettier/parser-typescript";
+import type { CreateFunction } from "$lib/ts/types";
 
 import fs from 'fs';
 import path from 'path';
@@ -23,22 +24,27 @@ export async function load({ url, params }) {
 
   if (!category) throw error(404, "Create category not found");
 
-  let categoryTitle: string = category.title;
+  let createFunc: CreateFunction = {
+    categoryTitle: category.title,
+    nickname: "",
+    code: "",
+    new: true,
+    path: `${category.route}.json`,
+  };
+
   let functionDeclaration: string = category.functionDeclaration;
   let codeString: string = "\n// Write your code here\n";
-  let nickname: string = "";
   let imports: string = category.imports;
-  let newFunction: boolean = true;
 
   const functionIndex: string = url.searchParams.get("func");
   if (functionIndex) {
     let func = category.functions[+functionIndex];
-    newFunction = true;
+    createFunc.new = false;
     codeString = func.code;
-    nickname = func.nickname;
+    createFunc.nickname = func.nickname;
   }
 
-  let code: string = await prettier.format(`${imports}\n\n${functionDeclaration}${codeString}}`, {
+  createFunc.code = await prettier.format(`${imports}\n\n${functionDeclaration}${codeString}}`, {
     parser: "typescript",
     plugins: [parserTypescript]
   });
@@ -49,5 +55,6 @@ export async function load({ url, params }) {
   const individualFilePath = path.resolve(`src/lib/ts/ga/individual.ts`);
   const individualContent: string = fs.readFileSync(individualFilePath, 'utf-8');
 
-  return { individualContent, populationContent, categoryTitle, code, nickname, newFunction };
+  return { individualContent, populationContent, createFunc };
 }
+
