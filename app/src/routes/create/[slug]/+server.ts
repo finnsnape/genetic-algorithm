@@ -1,27 +1,28 @@
-import type { CreateFunction } from "$lib/ts/types";
 import { json } from '@sveltejs/kit';
+import type { CreateCategory, CreateFunction } from '$lib/ts/types';
 import fs from 'fs';
 import path from 'path';
 
-/** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
-  const { createFunc } = await request.json();
-  console.log("body", createFunc["path"]);
-  const urlParams = new URLSearchParams(request.url);
-  let jsonFilePath: string = path.resolve(`./src/lib/data/create/${createFunc["path"]}`);
-  let currentJson = JSON.parse(fs.readFileSync(jsonFilePath, 'utf-8'));
-  if (!createFunc.new) {
-    const functionIndex: string = urlParams.get("func");
-    currentJson["functions"][+functionIndex]["code"] = createFunc["code"];
+	const createCategory: CreateCategory = await request.json();
+  //console.log(createCategory);
+  let jsonFilePath: string = path.resolve(`./src/lib/data/create/${createCategory.route}.json`);
+  let currentJSON = JSON.parse(fs.readFileSync(jsonFilePath, 'utf-8'));
+  const currentFunction: CreateFunction = createCategory.currentFunction;
+  if (currentFunction.index !== undefined) {
+    currentJSON["functions"][currentFunction.index]["code"] = currentFunction.code;
+    currentJSON["functions"][currentFunction.index]["nickname"] = currentFunction.nickname;
   } else {
-    currentJson.functions.push({
-      nickname: createFunc["nickname"],
-      code: createFunc["code"]
+    currentJSON["functions"].push({
+      nickname: currentFunction.nickname,
+      code: currentFunction.code
     });
   }
-  fs.writeFile(jsonFilePath, currentJson, (err) => {
+  console.log(currentJSON);
+  fs.writeFile(jsonFilePath, JSON.stringify(currentJSON), (err) => {
+    console.log(err);
   });
-  return {
-    "status": 200,
-  };
+
+
+	return json({ status: 201 });
 }
