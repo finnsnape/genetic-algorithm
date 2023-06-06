@@ -17,8 +17,10 @@
 
     let formattedCode: string = format(`${$createCategory.functionDeclaration}${$createCategory.currentFunction.code}}`, {
       parser: 'typescript',
-      plugins: [parserTypescript]
+      plugins: [parserTypescript],
+      printWidth: 100
     });
+    
 
     editor = monaco.editor.create(editorContainer, {
       value: [`${$createCategory.imports}\n`,formattedCode].join('\n'),
@@ -55,7 +57,7 @@
   }
 
   .editor {
-    width: 1000px;
+    width: 1200px;
     height: 600px;
   }
 </style>

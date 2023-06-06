@@ -31,6 +31,6 @@ export async function load({ url, params }) {
     functionDeclaration: category.functionDeclaration,
     currentFunction: currentFunction
   };
-  
+
   return { createCategory };
 }

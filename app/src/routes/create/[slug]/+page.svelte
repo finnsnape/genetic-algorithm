@@ -5,15 +5,15 @@
    import CreateEditor from '$lib/components/create/CreateEditor.svelte';
    /** @type {import('./$types').PageData} */  export let data;
 
-   onMount(async () => { // TODO: temp
+   onMount(async () => {
     createCategory.set(data.createCategory);
    });
 
   async function saveFunction() {
     const response = await fetch($page.url.pathname, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify($createCategory)
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify($createCategory)
     });
   }
 </script>
