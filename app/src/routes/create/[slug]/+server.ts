@@ -6,7 +6,6 @@ import path from 'path';
 
 export async function POST({ request }) {
 	const createCategory: CreateCategory = await request.json();
-  //console.log(createCategory);
   let jsonFilePath: string = path.resolve(`./src/lib/data/create/${createCategory.route}.json`);
   let currentJSON = JSON.parse(await readFile(jsonFilePath, 'utf-8'));
   const currentFunction: CreateFunction = createCategory.currentFunction;

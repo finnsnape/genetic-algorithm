@@ -10,6 +10,7 @@ import { CustomEvaluator } from "./evaluator";
 import { CustomReproducer } from "./reproducer";
 import LoadCustomFunctions from "$lib/ts/load_functions";
 
+
 export default class GeneticAlgorithm {
   selector: Selector;
   evaluator: Evaluator;
@@ -98,7 +99,7 @@ export default class GeneticAlgorithm {
     if (this.solved) {
       console.log("Solution found")
       return true; // solution found
-    } else if (this.generation > this.maxGenerations && this.maxGenerations != 0) {
+    } else if (this.generation >= this.maxGenerations && this.maxGenerations != 0) {
       console.log("Maximum generations reached");
       return true; // exceeded max generations
     }

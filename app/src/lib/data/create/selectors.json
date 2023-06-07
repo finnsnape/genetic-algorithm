@@ -1,12 +1,12 @@
 {
   "title": "Selectors",
   "route": "selectors",
-  "imports": "import { Individual } from '/ga/individual'; import { Population } from '/ga/population';",
+  "imports": "import { Individual } from \"/ga/individual\"; import { Population } from \"/ga/population\";",
   "functionDeclaration": "function select(population: Population): Individual {",
   "functions": [
     {
       "nickname": "Tournament",
-      "code": "const competitors: Individual[] = _.sampleSize(population.individuals, 4); const winner = competitors.reduce((currentWinner, competitor) => competitor.fitness >= currentWinner.fitness ? competitor : currentWinner); return winner;"
+      "code": "const competitors: Individual[] = _.sampleSize(population.individuals, config.tournamentSize); const winner = competitors.reduce((currentWinner, competitor) => competitor.fitness >= currentWinner.fitness ? competitor : currentWinner); return winner;"
     },
     {
       "nickname": "Roulette",

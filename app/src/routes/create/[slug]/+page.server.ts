@@ -4,6 +4,7 @@ import reproducers from "$lib/data/create/reproducers.json";
 import mutators from "$lib/data/create/mutators.json";
 import selectors from "$lib/data/create/selectors.json";
 import evaluators from "$lib/data/create/evaluators.json";
+import config from "$lib/data/run/config.json";
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url, params }) {
@@ -29,7 +30,8 @@ export async function load({ url, params }) {
     route: category.route,
     imports: category.imports,
     functionDeclaration: category.functionDeclaration,
-    currentFunction: currentFunction
+    currentFunction: currentFunction,
+    config: config
   };
 
   return { createCategory };

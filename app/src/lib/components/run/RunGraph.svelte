@@ -2,12 +2,9 @@
   import Chart from 'chart.js/auto';
   import { onMount } from 'svelte';
   import { gaStatus } from '$lib/ts/stores';
-  // import { Individual } from '$lib/ts/ga';
-  import type { GAStatus } from '$lib/ts/types';
 
   let chart: Chart;
   let canvas: HTMLCanvasElement;
-  let gaData: GAStatus;
 
   onMount(async () => {
     if (typeof window === "undefined") return; // is this needed?
@@ -36,28 +33,21 @@
     });
 
     gaStatus.subscribe((value) => {
-        gaData = value;
-        updateChart();
-        // update graph
+      if (!chart || !value.fittestIndividual || !value.generation) return;
+      if (value.generation == 1) resetChart(false);
+      chart.data.labels.push(value.generation);
+      chart.data.datasets[0].data.push(value.fittestIndividual.fitness);
+      chart.update();
     });
   });
 
-  function updateChart() {
-    if (!chart || !gaData.fittestIndividual) return;
-    let highestFitness: number = gaData.fittestIndividual.fitness;
-    let generation: string = gaData.generation.toString();
-    chart.data.labels.push(generation);
-    chart.data.datasets[0].data.push(highestFitness);
-    chart.update();
-  }
-
-  function resetChart() {
+  function resetChart(update: boolean) {
     if (!chart) return;
     chart.data.labels = [];
     chart.data.datasets.forEach((dataset) => {
       dataset.data = [];
     });
-    chart.update();
+    if (update) chart.update();
   }
 </script>
 
@@ -65,7 +55,7 @@
   .wrapper {
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: 700px;
   }
 
   canvas {
@@ -79,5 +69,5 @@
 
 <div class="wrapper">
   <canvas bind:this={canvas} id="chart"></canvas>
-  <button class="button button--tertiary paragraph-3" on:click={resetChart}>Reset graph</button>
+  <button class="button button--tertiary paragraph-3" on:click={() => resetChart(true)}>Reset graph</button>
 </div>

@@ -7,13 +7,13 @@ label {
   color: #555;
 }
 
-input[type="text"], select, option, textarea {
+input[type="text"], input[type="number"], select, option, textarea {
   background-color: #ddd;
   color: #000;
   padding: $size-000 $size-010;
 }
 
-input[type="text"], select, textarea {
+input[type="text"], input[type="number"], select, textarea {
   border-radius: $size-000;
   border: 0;
   &:focus {

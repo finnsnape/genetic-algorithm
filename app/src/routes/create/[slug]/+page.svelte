@@ -37,7 +37,7 @@
   <div class="content stack">
     <label class="paragraph-2" for="nickname">Nickname</label>
     {#if $createCategory && $createCategory.currentFunction}
-    <input type="text" name="nickname" bind:value={$createCategory.currentFunction.nickname}>
+    <input type="text" name="nickname" bind:value={$createCategory.currentFunction.nickname} placeholder="{$createCategory.title}Function1">
     {/if}
     <p class="paragraph-2">Code:</p>
     <div class="editor-wrapper">

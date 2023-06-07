@@ -1,5 +1,4 @@
 import type { Individual } from "./individual";
-import { Utils } from "./utils";
 
 export interface Mutator {
   mutate(individual: Individual): string[];
