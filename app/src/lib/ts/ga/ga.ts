@@ -84,7 +84,6 @@ export default class GeneticAlgorithm {
   }
 
   evolve(): void {
-    // this.print();
     this.evaluate();
     if (this.solved) {
       return;

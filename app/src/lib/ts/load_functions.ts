@@ -18,7 +18,6 @@ type EvaluatorFunction = Evaluator['evaluate'];
 type SelectorFunction = Selector['select'];
 
 export default class LoadCustomFunctions {
-  // gonna need a lot of try/catch here!
 
   static transpile(code: string): string { // convert TS to JS
     const transpiled = transpileModule(code, {

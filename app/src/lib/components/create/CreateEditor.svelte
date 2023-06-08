@@ -49,27 +49,18 @@
     });
 
     function formatFunctionBody(body: string): string {
-    // Remove the enclosing braces
-    const bodyWithoutBraces = body.slice(1, body.length - 1);
+      const bodyWithoutBraces = body.slice(1, body.length - 1);
 
-  // Split into lines, trim each line, then join them back together
-  // We keep line breaks before comments to make them more readable
-  const formatted = bodyWithoutBraces
-    .split('\n')
-    .map(line => {
-      // If it's a comment line, preserve it as is
-      if(line.trim().startsWith('//')) {
-        return '\n' + line.trim() + '\n';
-      }
-      // Otherwise, trim and keep it on the same line
-      return line.trim();
-    })
-    .join('');
+      const formatted = bodyWithoutBraces.split('\n').map(line => {
+        if(line.trim().startsWith('//')) {
+          return '\n' + line.trim() + '\n';
+        }
+        return line.trim();
+      }).join('');
+      return formatted.replace(/;(?=\s(?!$))/g, ';');
+    } // source: SO / OAI
 
-  // Remove semicolon followed by whitespace except when it's followed by a newline
-  return formatted.replace(/;(?=\s(?!$))/g, ';');
-}
-
+    // source: SO / OAI
     function cleanCode(code: string): string | null {
       const sourceFile = ts.createSourceFile('temp.ts', code, ts.ScriptTarget.Latest, true);
       let functionBody: ts.Block | null = null;

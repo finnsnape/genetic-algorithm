@@ -1,15 +1,6 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import { gaStatus } from '$lib/ts/stores';
-  // import { Individual } from '$lib/ts/ga';
-  import type { GAStatus } from '$lib/ts/types';
 
-  // let data: GAStatus;
-  // onMount(async () => {
-  //   gaStatus.subscribe((value) => { // do we need to do this?
-  //       data = value;
-  //   });
-  // });
 </script>
 
 <style lang="scss">
