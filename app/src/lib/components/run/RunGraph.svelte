@@ -5,6 +5,7 @@
 
   let chart: Chart;
   let canvas: HTMLCanvasElement;
+  let fontSettings = {size: 20,family: "Source Code Pro"};
 
   onMount(async () => {
     if (typeof window === "undefined") return; // is this needed?
@@ -21,11 +22,11 @@
           y: {
             beginAtZero: true,
             max: 1,
-            title: {display: true,text: "Maximum fitness",font: {size: 20,family: "Source Code Pro",}}
+            title: {display: true,text: "Maximum fitness",font: fontSettings}
           },
           x: {
             beginAtZero: true,
-            title: {display: true,text: "Generation",font: {size: 20,family: "Source Code Pro",}}
+            title: {display: true,text: "Generation",font: fontSettings}
           }
         },
         plugins: {legend: {display: false}}
@@ -55,6 +56,7 @@
   .wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     height: 700px;
   }
 

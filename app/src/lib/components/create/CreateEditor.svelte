@@ -14,6 +14,7 @@
   onMount(async () => {
     const monacoEditor = await import('monaco-editor');
     loader.config({ monaco: monacoEditor.default });
+
     monaco = await loader.init();
 
     let configDeclaration: string = `let config = ${JSON.stringify($createCategory.config)};`
@@ -22,6 +23,19 @@
       parser: 'typescript',
       plugins: [parserTypescript],
       printWidth: 100
+    });
+
+    $createCategory.importContent.forEach((key, value) =>{
+      monaco.languages.typescript.typescriptDefaults.addExtraLib(value, key);
+    });
+
+    monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+      target: monaco.languages.typescript.ScriptTarget.ESNext,
+      allowNonTsExtensions: true,
+      moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
+      module: monaco.languages.typescript.ModuleKind.ESNext,
+      noEmit: true,
+      typeRoots: ["/src/ts"]
     });
 
     editor = monaco.editor.create(editorContainer, {
@@ -57,7 +71,6 @@
 }
 
     function cleanCode(code: string): string | null {
-      console.log(code);
       const sourceFile = ts.createSourceFile('temp.ts', code, ts.ScriptTarget.Latest, true);
       let functionBody: ts.Block | null = null;
 
@@ -79,21 +92,10 @@
       return null;
     }
 
-    // function cleanCode(code: string) {
-    //   console.log("imports", $createCategory.imports);
-    //   let cleanCode: string = code.replace($createCategory.imports, "").replace(configDeclaration, "").replace($createCategory.functionDeclaration, "").replaceAll("  ", "");
-    //   let finalBraceIndex: number = cleanCode.lastIndexOf("}");
-    //   return cleanCode.slice(0, finalBraceIndex) + cleanCode.slice(finalBraceIndex + 1);
-    // }
-
     editor.onDidChangeModelContent(() => {
-      console.log("~~~~~~~~~~~~~~~~");
-      console.log("changed");
       let code: string | null = formatFunctionBody(cleanCode(editor.getValue()));
-      console.log(code);
       if (code === null) return;
       createCategory.update(currentValue => {
-        console.log(currentValue.currentFunction.nickname);
         currentValue.currentFunction.code = code;
         return currentValue;
       });

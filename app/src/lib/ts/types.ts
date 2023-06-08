@@ -11,7 +11,8 @@ export interface CreateCategory {
   imports: string,
   functionDeclaration: string,
   currentFunction: CreateFunction
-  config: Record<string, unknown>
+  config: Record<string, unknown>,
+  importContent: Map<string, string>
 }
 
 export interface CreateFunction {

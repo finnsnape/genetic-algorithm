@@ -99,7 +99,6 @@
     align-items: center;
     margin-top: $size-070;
     column-gap: $size-070;
-    justify-content: flex-start;
   }
 
   button[disabled] {
